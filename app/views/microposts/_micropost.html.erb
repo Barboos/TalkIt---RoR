@@ -1,0 +1,37 @@
+<li id="micropost-<%= micropost.id %>">
+  <%= link_to gravatar_for(micropost.user, size: 50), micropost.user %>
+  <span class="user"><%= link_to micropost.user.name, micropost.user %></span>
+  <span class="content">
+    <b><%= micropost.title %></b> |
+    <a class="show-button" class="button default ok" onclick="show_hide(this)">
+      show
+    </a>
+    <div class="micropost-content" style="display: none">
+      <%= image_tag micropost.picture.url if micropost.picture? %>
+      <%= micropost.content %>
+    </div>
+  </span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(micropost.created_at) %> ago.
+    <% if current_user?(micropost.user) %>
+       | <%= link_to "delete", micropost, method: :delete,
+                                       data: { confirm: "You sure?" }%>
+    <% end %>
+  </span>
+</li>
+
+<script>
+function show_hide(obj) {
+  var father = obj.parentElement;
+  var content = father.querySelector(".micropost-content");
+  var button = father.querySelector(".show-button");
+  if(content.style.display == "block") {
+    content.style.display = "none";
+    button.innerHTML = "show";
+  }
+  else {
+    content.style.display = "block";
+    button.innerHTML = "hide";
+  }
+}
+</script>
