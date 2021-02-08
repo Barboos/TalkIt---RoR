@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'mini_magick',              '4.7.0'
-gem 'carrierwave',              '1.2.2'
+gem 'carrierwave',              '1.3.2'
 gem 'bootstrap-sass',           '3.3.7'
 gem 'rails',                    '5.1.6'
 gem 'bcrypt',                   '3.1.12'
